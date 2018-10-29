@@ -32,5 +32,16 @@ IF(NOT QtPropertyBrowser_USE_FILE_INCLUDED)
  
   # Add link directories needed to use QtPropertyBrowser.
   LINK_DIRECTORIES(${QtPropertyBrowser_LIBRARY_DIRS})
+  
+  # TODO: Make this dynamic!!!
+  SET(QtPropertyBrowser_LIBRARIES_RELEASE QtPropertyBrowser.dll)
+  SET(QtPropertyBrowser_LIBRARIES_DEBUG QtPropertyBrowser-debug.dll)
+  
+  # TODO: Make this case-insensitive!
+  IF (CMAKE_BUILD_TYPE MATCHES Debug)
+		SET (QtPropertyBrowser_LIBRARIES ${QtPropertyBrowser_LIBRARIES_DEBUG})
+	ELSE()
+		SET (QtPropertyBrowser_LIBRARIES ${QtPropertyBrowser_LIBRARIES_RELEASE})
+  ENDIF()
  
 ENDIF()
